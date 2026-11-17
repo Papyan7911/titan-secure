@@ -1,0 +1,18 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { Icon } from "@/components/icons";
+import { CTASection, PageIntro } from "@/components/page-sections";
+
+export const metadata: Metadata = { title: "About Us", description: "Meet Titan Secure: approachable security experts who listen first, recommend honestly, and support you long after installation." };
+
+const values = [
+  { n: "01", title: "People before products", body: "We take time to understand your concerns before we recommend a single thing." },
+  { n: "02", title: "Advice without the pressure", body: "Clear choices, honest answers, and no pushy sales tactics. Ever." },
+  { n: "03", title: "A job done with care", body: "Thoughtful planning, skilled installation, and respect for your space." },
+  { n: "04", title: "Here for the long run", body: "We don’t disappear after installation. Our support is part of the deal." },
+];
+
+export default function AboutPage() {
+  return <main id="main"><PageIntro eyebrow="A LITTLE ABOUT US" title={<>Good people.<br />A safer world<span className="hero-period">.</span></>} description="Titan Secure started with a simple idea: getting quality security shouldn’t feel complicated or intimidating." /><section className="story-section section"><div className="container story-grid"><div className="story-image"><Image src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1100&q=85" alt="Welcoming, light-filled workspace where the Titan Secure team works" fill sizes="(max-width: 800px) 100vw, 50vw" /><div className="story-image-caption"><Icon name="spark" size={18} /><span>Here for your peace of mind.<br /><strong>And the people behind it.</strong></span></div></div><div className="story-copy"><span className="eyebrow">WHY TITAN SECURE</span><h2>Security should feel reassuring. From the very first hello.</h2><p>Choosing a security system is personal. It’s about protecting the people you love, the livelihood you’ve built, or the place that makes your business yours.</p><p>We started Titan Secure to make that choice feel a little less daunting. Our team will ask good questions, explain your options in plain English, and recommend only what we genuinely believe will help.</p><p>From first conversation to installation and everything after, you’ll always know who you’re talking to and what happens next.</p><Link href="/quote" className="text-link">Meet your security team <Icon name="arrow" size={17} /></Link></div></div></section><section className="values-section"><div className="container"><div className="section-heading"><span className="eyebrow">WHAT YOU CAN EXPECT</span><h2>Our promises, in practice.</h2><p>Not just what we believe. How we work, every single day.</p></div><div className="values-grid">{values.map((v) => <article key={v.n} className="value-card"><span>{v.n}</span><h3>{v.title}</h3><p>{v.body}</p></article>)}</div></div></section><section className="service-area-band"><div className="container area-inner"><span className="area-icon"><Icon name="pin" size={27} /></span><div><span className="eyebrow">LOCAL KNOW-HOW, PERSONAL SERVICE</span><h2>Your neighborhood. Our expertise.</h2><p>Our local installation teams proudly serve homes and businesses across the greater metro area and surrounding communities. Not sure if we cover your area? Just ask.</p></div><Link href="/contact" className="button button-dark">Check your area <Icon name="arrow" size={17} /></Link></div></section><CTASection title="A real person. A straightforward conversation." text="Tell us what you’re looking for. There’s no obligation and absolutely no pressure." /></main>;
+}

@@ -1,0 +1,17 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+import { Icon } from "@/components/icons";
+import { PageIntro, CTASection } from "@/components/page-sections";
+
+export const metadata: Metadata = { title: "Security Services", description: "Explore professionally installed CCTV, intruder alarm, access control, and maintenance services from Titan Alarm & Electronics." };
+
+const services = [
+  { id: "cctv", icon: "camera" as const, number: "01", title: "CCTV & video surveillance", subtitle: "A clearer view. A calmer mind.", text: "We design and install high-definition camera systems that give you the right view of the right places. Check in remotely, receive intelligent alerts, and get clear footage when you need it.", points: ["Crisp HD and 4K camera options", "Secure live and recorded remote viewing", "Intelligent motion detection", "Thoughtful camera placement and setup"] },
+  { id: "alarms", icon: "alarm" as const, number: "02", title: "Intruder alarm systems", subtitle: "A smart first line of defense.", text: "From simple, easy-to-use alarms to fully monitored systems, we match dependable protection to how you live and work. Get alerts that help you act, not alerts that just add noise.", points: ["Smart, app-connected alarm systems", "Door, window, and motion sensors", "Optional 24/7 professional monitoring", "Clear setup and simple day-to-day use"] },
+  { id: "access-control", icon: "lock" as const, number: "03", title: "Access control", subtitle: "Welcome the right people in.", text: "Manage who can enter your property, where they can go, and when. We install flexible access systems for homes, offices, and multi-site businesses.", points: ["Keypad, fob, and mobile credentials", "Permission-based user access", "Entry history at a glance", "Convenient systems that grow with you"] },
+  { id: "support", icon: "shield" as const, number: "04", title: "Maintenance & support", subtitle: "Here when you need us.", text: "Security works best when it works reliably. Our team provides ongoing maintenance, responsive troubleshooting, and real technical support from people who know your system.", points: ["Scheduled system health checks", "Friendly, knowledgeable troubleshooting", "Ongoing servicing and upgrades", "24/7 emergency support available"] },
+];
+
+export default function ServicesPage() {
+  return <main id="main"><PageIntro eyebrow="WHAT WE DO" title={<>Security that fits<br />your world<span className="hero-period">.</span></>} description="Practical, thoughtfully designed security for your home or business. No off-the-shelf answers. Just a solution built around what matters to you." /><section className="section detail-services"><div className="container">{services.map((item) => <article className="detail-service" id={item.id} key={item.id}><div className="detail-number">{item.number}<span /></div><div className="detail-copy"><span className="service-icon"><Icon name={item.icon} size={23} /></span><span className="eyebrow">{item.subtitle}</span><h2>{item.title}</h2><p>{item.text}</p><ul className="check-list">{item.points.map((point) => <li key={point}><Icon name="check" size={17} />{point}</li>)}</ul><Link href="/quote" className="text-link">Talk to us about this service <Icon name="arrow" size={17} /></Link></div></article>)}</div></section><CTASection title="Not sure what you need?" text="That’s exactly what we’re here for. Tell us a little about your space, and we’ll help you figure out the next step." /></main>;
+}
